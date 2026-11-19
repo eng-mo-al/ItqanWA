@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: itqanwa-engine
+    runtime: node
+    plan: free
+    buildCommand: npm install --omit=dev
+    startCommand: node src/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: ENGINE_API_TOKEN
+        sync: false
+      - key: ENGINE_SECRET
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: DB_SSL
+        value: "true"
+      - key: TZ
+        value: Asia/Riyadh
+      - key: NODE_VERSION
+        value: "22"
